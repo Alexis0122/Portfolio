@@ -1,0 +1,50 @@
+---
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- <PlayOnClick client:load /> -->
+		<div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+    <div>
+      <Header />
+			<slot />
+    </div>
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  body {
+    display: flex;
+		color: white;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overscroll-behavior: none;
+  }
+  Header {
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
