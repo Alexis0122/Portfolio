@@ -1,0 +1,108 @@
+---
+---
+
+<footer id="footer" class="bg-gray-900 text-white py-12 mt-20">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-6 md:mb-0 text-center md:text-left">
+        <a href="/" class="text-2xl font-bold text-white"
+          >Alexis<span class="font-bold text-center text-duron mb-4">Ramirez</span></a
+        >
+        <p class="text-gray-400 mt-2">Frontend Developer</p>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0 text-center md:text-left"
+      >
+        <div>
+          <h4 class="text-lg font-medium mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#home" class="text-gray-400 hover:text-white transition"
+                >Home</a>
+            </li>
+            <li>
+              <a href="#about" class="text-gray-400 hover:text-white transition"
+                >About</a>
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="text-gray-400 hover:text-white transition">Projects</a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-gray-400 hover:text-white transition">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-medium mb-4">Connect</h4>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="https://linkedin.com/in/alexis-ramirez-26388a276/"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition">LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/Alexis0122"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition">GitHub</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition"
+                >Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                href="mailto:alexisramirez0122@hotmail.com"
+                class="text-gray-400 hover:text-white transition">Email</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+    >
+      <p class="text-gray-400 mb-4 md:mb-0 text-center md:text-left">
+        © {new Date().getFullYear()} Alexis Ramirez. All rights reserved.
+      </p>
+      <div class="flex space-x-6">
+        <a href="" class="text-gray-400 hover:text-white transition"
+          >Privacy Policy</a
+        >
+        <a href="" class="text-gray-400 hover:text-white transition"
+          >Terms of Service</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("#footer", {
+    scrollTrigger: {
+      trigger: "#footer",
+      start: "top 95%",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power2.out",
+  });
+</script>

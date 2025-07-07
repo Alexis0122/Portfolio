@@ -1,5 +1,7 @@
 ---
-import Header from "../components/Header.astro";
+import Analytics from "@vercel/analytics/astro";
+import HeaderTs from "../components/HeaderTs/HeaderTs";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -16,15 +18,12 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
+    <Analytics />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-hero bg-fixed bg-cover text-white" >
     <!-- <PlayOnClick client:load /> -->
-		<div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
-    <div>
-      <Header />
-			<slot />
-    </div>
+    <slot />
   </body>
 </html>
 <style is:global>
@@ -36,15 +35,30 @@ const { title } = Astro.props;
   }
   body {
     display: flex;
-		color: white;
+    color: white;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
-    overscroll-behavior: none;
+    overscroll-behavior: smooth;
   }
   Header {
-    padding: 30px;
-    justify-content: center;
-    align-items: center;
+  }
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #6e8efb;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
   }
 </style>

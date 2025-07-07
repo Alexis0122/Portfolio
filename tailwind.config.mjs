@@ -4,7 +4,16 @@ export default {
 	darkMode : 'class',
 	theme: {
 		extend: {
-		},
-	},
+		colors: {
+        duron: "#63e", // para acentos violetas
+        base: "#000000", // fondo base
+        light: "#ffffff",
+        muted: "#aaaaaa",
+      },
+      backgroundImage: {
+        hero: "radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%)",
+      },
+    },
+  },
 	plugins: [],
 }
