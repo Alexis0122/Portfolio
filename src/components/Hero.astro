@@ -1,0 +1,93 @@
+---
+import Badge from "../components/Badge.astro";
+import Github from "../components/icons/Github.astro";
+import Linkedin from "../components/icons/Linkedin.astro";
+import SocialBalls from "../components/SocialBalls.astro";
+---
+
+<section
+  id="home"
+  class="flex flex-col lg:flex-row items-center lg:items-start justify-between lg:space-x-8 py-44 w-full mx-auto lg:w-[840px]"
+>
+  <section class="lg:w-1/2">
+    <h1
+      id="hero-title"
+      class="text-Duron text-6xl font-bold flex flex-row pb-3"
+    >
+      Hello,<br /> I'm Alexis
+    </h1>
+    <h2
+      id="hero-subtitle"
+      class="text-Olympic text-2xl flex flex-row gap-x-3 pb-4 opacity-90"
+    >
+      FullStack Developer
+      <a
+        href="https://www.linkedin.com/in/alexis-ramirez-26388a276/"
+        target="_blank"
+      >
+        <Badge>available for work</Badge>
+      </a>
+    </h2>
+    <div id="button-sec-1" class="flex gap-3">
+      <button type="button" class="no-underline hover:underline">Hire me</button
+      >
+      <button type="button" class="no-underline hover:underline"
+        >Download CV</button
+      >
+    </div>
+    <nav id="button-sec-2" class="flex gap-x-3 pt-4">
+      <SocialBalls href="https://www.linkedin.com/in/alexis-ramirez-26388a276/">
+        <Linkedin class="w-6 h-6" />
+        LindedIn
+      </SocialBalls>
+      <SocialBalls href="https://github.com/Alexis0122">
+        <Github class="w-6 h-6" />
+        GitHub
+      </SocialBalls>
+    </nav>
+  </section>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      scrub: 1,
+    },
+  });
+
+  gsap.from("#hero-title", {
+    y: 40,
+    opacity: 0,
+    duration: 2,
+    ease: "power2.out",
+  });
+
+  gsap.from("#hero-subtitle", {
+    y: 30,
+    opacity: 0,
+    duration: 2,
+    delay: 0.3,
+    ease: "power2.out",
+  });
+
+  gsap.from("#button-sec-1", {
+    y: 20,
+    opacity: 0,
+    duration: 2,
+    delay: 0.5,
+    ease: "power2.out",
+  });
+
+  gsap.from("#button-sec-2", {
+    y: 10,
+    opacity: 0,
+    duration: 2,
+    delay: 0.7,
+    ease: "power2.out",
+  });
+</script>
