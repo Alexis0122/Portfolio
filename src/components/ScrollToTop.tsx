@@ -1,4 +1,4 @@
-import { ArrowCircleUp } from "@phosphor-icons/react";
+import { ArrowUp } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
 const ScrollToTop = () => {
@@ -33,7 +33,7 @@ const ScrollToTop = () => {
       }`}
       aria-label="Volver arriba"
     >
-      <ArrowCircleUp/>
+      <ArrowUp size={32} />
     </button>
   );
 };

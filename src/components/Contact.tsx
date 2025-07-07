@@ -1,4 +1,5 @@
-import React from "react";
+import { DevToLogo, Envelope, GithubLogo, LinkedinLogo, MapPinLine } from "@phosphor-icons/react";
+import React, { type ReactNode } from "react";
 
 export default function ContactSection() {
   return (
@@ -61,41 +62,37 @@ export default function ContactSection() {
           </h3>
           <div className="space-y-6">
             <ContactInfo
-              icon="fas fa-envelope"
+              icon={<Envelope size={32} />}
               title="Email"
               content="contact@alexisramirez.dev"
             />
             <ContactInfo
-              icon="fas fa-map-marker-alt"
+              icon={<MapPinLine size={32} />}
               title="Location"
               content="Based in Santo Domingo, Dominican Republic"
             />
             <ContactInfo
-              icon="fas fa-globe"
+              icon={<DevToLogo size={32} />}
               title="Social Media"
               content={
                 <div className="flex space-x-4 pt-2">
                   {[
                     {
-                      icon: "fab fa-linkedin-in",
+                      icon: <LinkedinLogo size={20} color="white" />,
                       link: "https://linkedin.com/in/alexis-ramirez-26388a276/",
                     },
                     {
-                      icon: "fab fa-github",
+                      icon: <GithubLogo size={20} color="white" />,
                       link: "https://github.com/Alexis0122",
-                    },
-                    {
-                      icon: "fab fa-twitter",
-                      link: "#",
-                    },
-                  ].map((s) => (
+                    }
+                  ].map((s, index) => (
                     <a
-                      key={s.icon}
+                      key={index}
                       href={s.link}
                       target="_blank"
                       className="w-8 h-8 bg-black/30 rounded-full flex items-center justify-center hover:bg-duron/80 transition"
                     >
-                      <i className={`${s.icon} text-white`}></i>
+                      {s.icon}
                     </a>
                   ))}
                 </div>
@@ -113,13 +110,13 @@ const ContactInfo = ({
   title,
   content,
 }: {
-  icon: string;
+  icon: ReactNode;
   title: string;
   content: React.ReactNode;
 }) => (
   <div className="flex items-start">
     <div className="w-10 h-10 bg-duron/10 rounded-full flex items-center justify-center mr-4 mt-1">
-      <i className={`${icon} text-duron`}></i>
+      {typeof icon === "string" ? <i className={icon}></i> : icon}
     </div>
     <div>
       <h4 className="text-white font-medium">{title}</h4>
