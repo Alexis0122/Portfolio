@@ -1,25 +1,27 @@
-
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "RedSocialPet",
     description:
-      "A full-featured online store with product listings, cart functionality, and secure checkout.",
-    tech: ["React", "Node.js", "MongoDB"],
-    icon: "fas fa-project-diagram",
+      "RedSocialPet is a digital platform dedicated exclusively to pets, providing a safe and fun space for owners to interact, share content, and find events related to their pets. Through technological innovation, the platform offers a wide range of services.",
+    tech: ["React", "Node.js", "Firebase"],
+    image: "/RedSocialPet.png",
+    gitLink: "https://github.com/Alexis0122/RedSocialPet",
   },
   {
-    title: "Task Management App",
+    title: "CrowDevs",
     description:
-      "A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.",
-    tech: ["Vue.js", "Firebase", "TailwindCSS"],
-    icon: "fas fa-tasks",
+      "CrowdDevs is an app focused on creative projects, where creators can present their ideas, receive community funding, and update backers on the project's progress.",
+    tech: ["Next.js", "React", "Mantine"],
+    image: "/CrowDevs.png",
+    gitLink: "https://github.com/Alexis0122/webapp",
   },
   {
-    title: "Data Visualization Dashboard",
+    title: "MiConsulta or QuickCare",
     description:
-      "Interactive dashboard for displaying and analyzing complex datasets with customizable charts.",
-    tech: ["D3.js", "Express", "PostgreSQL"],
-    icon: "fas fa-chart-line",
+      "This app is designed to streamline the medical consultation process. Patients can easily schedule appointments, while doctors can manage their patient lists, record prescriptions, and access relevant information to provide more effective and personalized care. The platform helps improve communication, organization, and overall quality of medical services.",
+    tech: ["Next.js", "WebApi", "Mantine", "React"],
+    image: "/MiConsulta.png",
+    gitLink: "",
   },
 ];
 
@@ -34,14 +36,18 @@ export default function ProjectsSection() {
         specific problem or explore new technologies.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {projects.map((project) => (
           <div
             key={project.title}
             className="bg-black/30 rounded-xl overflow-hidden shadow-md p-6 border border-white/10"
           >
-            <div className="flex items-center justify-center h-40 mb-4">
-              <i className={`${project.icon} text-5xl text-duron`}></i>
+            <div className="flex items-center justify-center h-48 mb-4">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="max-h-full max-w-full object-contain mx-auto"
+              />
             </div>
             <h3 className="text-xl text-white font-semibold mb-2">
               {project.title}
@@ -51,11 +57,12 @@ export default function ProjectsSection() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs bg-black/40 text-white px-2 py-1 rounded"
+                  className="text-xs bg-black/40 text-white px-2 py-1 rounded border border-gray-900"
                 >
                   {tech}
                 </span>
               ))}
+              {/* <button key={project.gitLink} type="button" onClick={() => {}}>View</button> */}
             </div>
           </div>
         ))}
