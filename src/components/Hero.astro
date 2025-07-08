@@ -12,13 +12,14 @@ import SocialBalls from "../components/SocialBalls.astro";
   <section class="lg:w-1/2">
     <h1
       id="hero-title"
-      class="text-Duron text-6xl font-bold flex flex-row pb-3"
+      class="text-Duron text-4xl sm:text-6xl font-bold leading-tight pb-2"
     >
-      Hello,<br /> I'm Alexis
+      <span class="block">Hello,</span>
+      <span class="block">I'm Alexis Ramirez</span>
     </h1>
     <h2
       id="hero-subtitle"
-      class="text-Olympic text-2xl flex flex-row gap-x-3 pb-4 opacity-90"
+      class="text-Duron text-2xl flex flex-row gap-x-3 pb-4 opacity-90"
     >
       FullStack Developer
       <a
@@ -66,8 +67,8 @@ import SocialBalls from "../components/SocialBalls.astro";
   });
 
   gsap.to("#hero-blob", {
-    y: 20,
-    x: 10,
+    y: 30,
+    x: 20,
     rotation: 5,
     duration: 0.90,
     ease: "sine.inOut",
