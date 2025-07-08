@@ -12,10 +12,12 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Alexis Ramirez | Portfolio">
   <main>
     <HeaderTs client:load />
-    <Hero />
-    <About />
-    <Projects client:load />
-    <Contact client:load />
+    <div>
+      <Hero />
+      <About />
+      <Projects client:load />
+      <Contact client:load />
+    </div>
     <Footer />
     <ScrollToTop client:load />
   </main>

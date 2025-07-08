@@ -3,7 +3,7 @@ const projects = [
     title: "RedSocialPet",
     description:
       "RedSocialPet is a digital platform dedicated exclusively to pets, providing a safe and fun space for owners to interact, share content, and find events related to their pets. Through technological innovation, the platform offers a wide range of services.",
-    tech: ["React", "Node.js", "Firebase"],
+    tech: ["React", "Node.js", "Firebase", "TailwindCss"],
     image: "/RedSocialPet.png",
     gitLink: "https://github.com/Alexis0122/RedSocialPet",
   },
@@ -20,7 +20,7 @@ const projects = [
     description:
       "This app is designed to streamline the medical consultation process. Patients can easily schedule appointments, while doctors can manage their patient lists, record prescriptions, and access relevant information to provide more effective and personalized care. The platform helps improve communication, organization, and overall quality of medical services.",
     tech: ["Next.js", "WebApi", "Mantine", "React"],
-    image: "/MiConsulta.png",
+    image: "/QuickCare.png",
     gitLink: "",
   },
 ];
@@ -40,7 +40,7 @@ export default function ProjectsSection() {
         {projects.map((project) => (
           <div
             key={project.title}
-            className="bg-black/30 rounded-xl overflow-hidden shadow-md p-6 border border-white/10"
+            className="g-black/30 hover:scale-105 hover:bg-white/5 transition rounded-xl overflow-hidden shadow-md p-6 border border-white/10"
           >
             <div className="flex items-center justify-center h-48 mb-4">
               <img
@@ -62,8 +62,12 @@ export default function ProjectsSection() {
                   {tech}
                 </span>
               ))}
-              {/* <button key={project.gitLink} type="button" onClick={() => {}}>View</button> */}
             </div>
+            {project.gitLink && (
+              <a href={project.gitLink} target="_blank" className="inline-block text-sm text-duron font-medium hover:underline">
+                View Repo →
+              </a>
+            )}
           </div>
         ))}
       </div>
