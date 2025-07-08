@@ -1,6 +1,5 @@
 ---
 import Analytics from "@vercel/analytics/astro";
-import HeaderTs from "../components/HeaderTs/HeaderTs";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -22,7 +21,6 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-hero bg-fixed bg-cover text-white" >
-    <!-- <PlayOnClick client:load /> -->
     <slot />
   </body>
 </html>
