@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { List, X } from "@phosphor-icons/react"; // Hamburguesa y cerrar
 
 const sections = ["home", "about", "projects", "contact"];
 
@@ -20,7 +21,7 @@ export default function Header() {
           }
         }
       }
-    };
+    }; 
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -38,8 +39,8 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full shadow-sm z-50">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="fixed w-full shadow-sm z-50 bg-white/5 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <a
           href="/"
           className="text-2xl font-bold text-indigo-600"
@@ -66,34 +67,37 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* {/* Mobile Menu Button */}
-        {/* <button
+        {/* Mobile Menu Button */}
+        <button
           onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className="md:hidden text-gray-600 focus:outline-none"
+          className="md:hidden text-gray-500 focus:outline-none"
         >
-          <i className="fas fa-bars text-2xl" />
-        </button>  */}
+          {isMobileMenuOpen ? <X size={28} /> : <List size={28} />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden px-6 pb-4 flex flex-col space-y-2">
-          {sections.map((id) => (
-            <button
-              key={id}
-              onClick={() => handleNavClick(id)}
-              className={clsx(
-                "block py-2 font-medium text-left transition",
-                activeSection === id
-                  ? "text-indigo-600"
-                  : "text-gray-600 hover:text-indigo-600"
-              )}
-            >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
-            </button>
-          ))}
-        </div>
-      )}
+      <div
+        className={clsx(
+          "md:hidden flex flex-col items-center bg-white/5 px-6 transition-all duration-300 overflow-hidden",
+          isMobileMenuOpen ? "max-h-96 py-4" : "max-h-0"
+        )}
+      >
+        {sections.map((id) => (
+          <button
+            key={id}
+            onClick={() => handleNavClick(id)}
+            className={clsx(
+              "py-2 font-medium text-lg w-full text-center transition",
+              activeSection === id
+                ? "text-indigo-600"
+                : "text-gray-300 hover:text-indigo-600"
+            )}
+          >
+            {id.charAt(0).toUpperCase() + id.slice(1)}
+          </button>
+        ))}
+      </div>
     </header>
   );
 }

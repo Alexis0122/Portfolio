@@ -7,7 +7,7 @@ import SocialBalls from "../components/SocialBalls.astro";
 
 <section
   id="home"
-  class="flex flex-col lg:flex-row items-center lg:items-start justify-between lg:space-x-8 py-44 w-full mx-auto lg:w-[840px]"
+  class="relative flex flex-col lg:flex-row items-center lg:items-start justify-between lg:space-x-8 py-44 w-full mx-auto lg:w-[960px]"
 >
   <section class="lg:w-1/2">
     <h1
@@ -38,7 +38,7 @@ import SocialBalls from "../components/SocialBalls.astro";
     <nav id="button-sec-2" class="flex gap-x-3 pt-4">
       <SocialBalls href="https://www.linkedin.com/in/alexis-ramirez-26388a276/">
         <Linkedin class="w-6 h-6" />
-        LindedIn
+        LinkedIn
       </SocialBalls>
       <SocialBalls href="https://github.com/Alexis0122">
         <Github class="w-6 h-6" />
@@ -46,6 +46,11 @@ import SocialBalls from "../components/SocialBalls.astro";
       </SocialBalls>
     </nav>
   </section>
+  <div
+    id="hero-blob"
+    class="hidden lg:block absolute right-10 top-32 w-96 h-96 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-30 rounded-full blur-2xl pointer-events-none z-0"
+  >
+  </div>
 </section>
 
 <script>
@@ -58,6 +63,16 @@ import SocialBalls from "../components/SocialBalls.astro";
     scrollTrigger: {
       scrub: 1,
     },
+  });
+
+  gsap.to("#hero-blob", {
+    y: 20,
+    x: 10,
+    rotation: 5,
+    duration: 0.90,
+    ease: "sine.inOut",
+    repeat: -1,
+    yoyo: true,
   });
 
   gsap.from("#hero-title", {
