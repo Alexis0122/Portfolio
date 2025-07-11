@@ -1,7 +1,54 @@
-import { DevToLogo, Envelope, GithubLogo, LinkedinLogo, MapPinLine } from "@phosphor-icons/react";
-import React, { type ReactNode } from "react";
+import {
+  DevToLogo,
+  Envelope,
+  GithubLogo,
+  LinkedinLogo,
+  MapPinLine,
+} from "@phosphor-icons/react";
+import React, { type ReactNode, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const SERVICE_ID = "service_mwamkfa";
+const TEMPLATE_ID = "template_ragtdvb";
+const PUBLIC_KEY = "A1ex6YlhfCmZ8tNjL";
 
 export default function ContactSection() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    if (!formRef.current) return;
+
+    const data = new FormData(formRef.current);
+
+    const formData = {
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      subject: data.get("subject") as string,
+      message: data.get("message") as string,
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+      .then(() => {
+        setStatus("success");
+        formRef.current?.reset();
+        toast.success("Message sent successfully!");
+      })
+      .catch(() => {
+        setStatus("error");
+        toast.error("Something went wrong. Please try again.");
+      });
+  };
+
   return (
     <section id="contact" className="py-20 px-6 bg-transparent">
       <h2 className="text-4xl font-bold text-center text-duron mb-4">
@@ -15,7 +62,7 @@ export default function ContactSection() {
       <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
         {/* Form */}
         <div className="lg:w-1/2">
-          <form className="space-y-6">
+          <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
             {["name", "email", "subject"].map((field) => (
               <div key={field}>
                 <label
@@ -25,8 +72,10 @@ export default function ContactSection() {
                   {field}
                 </label>
                 <input
-                  type="text"
+                  type={field === "email" ? "email" : "text"}
+                  name={field}
                   id={field}
+                  required
                   className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-duron focus:outline-none"
                   placeholder={`Your ${field}`}
                 />
@@ -41,16 +90,19 @@ export default function ContactSection() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={5}
+                required
                 className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-duron focus:outline-none"
                 placeholder="Write your message..."
               ></textarea>
             </div>
             <button
               type="submit"
-              className="w-full bg-duron text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-500 transition"
+              disabled={status === "sending"}
+              className="w-full bg-duron text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-500 transition disabled:opacity-50"
             >
-              Send Message
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
@@ -84,7 +136,7 @@ export default function ContactSection() {
                     {
                       icon: <GithubLogo size={20} color="white" />,
                       link: "https://github.com/Alexis0122",
-                    }
+                    },
                   ].map((s, index) => (
                     <a
                       key={index}
@@ -101,6 +153,18 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        toastClassName="bg-duron text-white rounded-xl"
+      />
     </section>
   );
 }
