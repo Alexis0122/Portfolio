@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { List, X } from "@phosphor-icons/react"; // Hamburguesa y cerrar
+import { List, X } from "@phosphor-icons/react";
 
 const sections = ["home", "about", "projects", "contact"];
 
@@ -21,7 +21,7 @@ export default function Header() {
           }
         }
       }
-    }; 
+    };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,27 +39,28 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full shadow-sm z-50 bg-white/5 backdrop-blur-md">
+    <header className="fixed w-full z-50 bg-base/40 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <a
           href="/"
-          className="text-2xl font-bold text-indigo-600"
+          className="text-2xl font-bold"
           onClick={() => handleNavClick("home")}
         >
-          A<span className="text-gray-800">R</span>
+          <span className="bg-gradient-to-r from-duron to-duron-light bg-clip-text text-transparent hover:from-duron-light hover:to-purple-300 transition-all duration-300">
+            A<span className="text-white">R</span>
+          </span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-8">
           {sections.map((id) => (
             <button
               key={id}
               onClick={() => handleNavClick(id)}
               className={clsx(
-                "nav-link font-medium transition",
+                "nav-link font-medium transition-colors",
                 activeSection === id
-                  ? "text-indigo-600 active"
-                  : "text-gray-600 hover:text-indigo-600"
+                  ? "text-duron active"
+                  : "text-white/80 hover:text-duron-light"
               )}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -67,19 +68,17 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className="md:hidden text-gray-500 focus:outline-none"
+          className="md:hidden text-white/80 hover:text-duron-light focus:outline-none transition-colors"
         >
           {isMobileMenuOpen ? <X size={28} /> : <List size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={clsx(
-          "md:hidden flex flex-col items-center bg-white/5 px-6 transition-all duration-300 overflow-hidden",
+          "md:hidden flex flex-col items-center bg-base/60 backdrop-blur-xl border-b border-white/5 transition-all duration-300 overflow-hidden",
           isMobileMenuOpen ? "max-h-96 py-4" : "max-h-0"
         )}
       >
@@ -88,10 +87,10 @@ export default function Header() {
             key={id}
             onClick={() => handleNavClick(id)}
             className={clsx(
-              "py-2 font-medium text-lg w-full text-center transition",
+              "py-2 font-medium text-lg w-full text-center transition-colors",
               activeSection === id
-                ? "text-indigo-600"
-                : "text-gray-300 hover:text-indigo-600"
+                ? "text-duron"
+                : "text-white/80 hover:text-duron-light"
             )}
           >
             {id.charAt(0).toUpperCase() + id.slice(1)}

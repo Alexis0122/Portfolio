@@ -1,56 +1,114 @@
 ---
-import Badge from "../components/Badge.astro";
 import Github from "../components/icons/Github.astro";
 import Linkedin from "../components/icons/Linkedin.astro";
-import SocialBalls from "../components/SocialBalls.astro";
 ---
 
 <section
   id="home"
-  class="relative flex flex-col lg:flex-row items-center lg:items-start justify-between lg:space-x-8 py-44 w-full mx-auto lg:w-[960px]"
+  class="relative flex flex-col lg:flex-row items-center lg:items-start justify-between lg:space-x-8 py-32 lg:py-44 w-full mx-auto lg:w-[960px] px-6"
 >
-  <section class="lg:w-1/2">
+  <div
+    class="absolute inset-0 pointer-events-none overflow-hidden"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute -top-20 -left-20 w-72 h-72 bg-duron/20 rounded-full blur-3xl animate-float"
+    ></div>
+    <div
+      class="absolute top-1/3 -right-20 w-96 h-96 bg-duron-light/10 rounded-full blur-3xl animate-float-slow"
+    ></div>
+    <div
+      class="absolute bottom-20 left-1/3 w-64 h-64 bg-duron-dark/20 rounded-full blur-3xl animate-float"
+      style="animation-delay: -3s"
+    ></div>
+  </div>
+
+  <section class="lg:w-1/2 relative z-10">
+    <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1.5 mb-6">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+      </span>
+      <span class="text-xs text-white/80 font-medium">Available for work</span>
+    </div>
+
     <h1
       id="hero-title"
-      class="text-Duron text-4xl sm:text-6xl font-bold leading-tight pb-2"
+      class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight pb-2"
     >
-      <span class="block">Hello,</span>
-      <span class="block">I'm Alexis Ramirez</span>
+      <span class="block text-white/80 text-lg sm:text-xl lg:text-2xl font-normal mb-2">Hello, I'm</span>
+      <span class="block bg-gradient-to-r from-duron via-duron-light to-purple-300 bg-clip-text text-transparent">
+        Alexis Ramirez
+      </span>
     </h1>
-    <h2
-      id="hero-subtitle"
-      class="text-Duron text-2xl flex flex-row gap-x-3 pb-4 opacity-90"
-    >
-      FullStack Developer
+
+    <div class="flex items-center gap-x-3 pb-6 mt-2">
+      <span
+        id="hero-subtitle"
+        class="text-xl sm:text-2xl text-white/80 font-mono"
+      >
+        <span class="text-duron">&gt;</span>
+        <span id="typewriter-text" class="text-white/80"></span>
+        <span class="animate-blink text-duron">|</span>
+      </span>
+    </div>
+
+    <p class="text-white/80 max-w-md mb-8 text-md">
+      FullStack Developer creating modern, scalable web applications with clean code and great user experiences.
+    </p>
+
+    <div id="cta-buttons" class="flex flex-wrap gap-4">
+      <a
+        href="mailto:alexisramirez0122@hotmail.com"
+        class="relative group inline-flex items-center gap-2 bg-duron text-white px-6 py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:shadow-glow-lg hover:scale-105"
+      >
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></span>
+        <span class="relative z-10 flex items-center gap-2">
+          Hire Me
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </span>
+      </a>
+      <a
+        href="https://drive.google.com/file/d/1KbhqT5zG9dtv5OQDrPHVBMMDp5x29tdS/view?usp=sharing"
+        class="relative group inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-duron/50 hover:shadow-glow-sm"
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          Download CV
+          <svg class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <nav class="flex gap-x-4 pt-8">
       <a
         href="https://www.linkedin.com/in/alexis-jose-ramirez-taveras-26388a276/"
         target="_blank"
+        class="group w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-duron/20 hover:border-duron/50 hover:shadow-glow-sm hover:scale-110"
       >
-        <Badge>available for work</Badge>
+        <Linkedin class="w-5 h-5 text-white/80 group-hover:text-duron-light transition-colors" />
       </a>
-    </h2>
-    <div id="button-sec-1" class="flex gap-3">
-      <a type="button" href="mailto:alexisramirez0122@hotmail.com" class="no-underline hover:underline">Hire me</a
+      <a
+        href="https://github.com/Alexis0122"
+        target="_blank"
+        class="group w-10 h-10 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-duron/20 hover:border-duron/50 hover:shadow-glow-sm hover:scale-110"
       >
-      <a type="button" href="https://drive.google.com/file/d/1KbhqT5zG9dtv5OQDrPHVBMMDp5x29tdS/view?usp=sharing" class="no-underline hover:underline"
-        >Download CV</a
-      >
-    </div>
-    <nav id="button-sec-2" class="flex gap-x-3 pt-4">
-      <SocialBalls href="https://www.linkedin.com/in/alexis-jose-ramirez-taveras-26388a276/">
-        <Linkedin class="w-6 h-6" />
-        LinkedIn
-      </SocialBalls>
-      <SocialBalls href="https://github.com/Alexis0122">
-        <Github class="w-6 h-6" />
-        GitHub
-      </SocialBalls>
+        <Github class="w-5 h-5 text-white/80 group-hover:text-duron-light transition-colors" />
+      </a>
     </nav>
   </section>
-  <div
-    id="hero-blob"
-    class="hidden lg:block absolute right-10 top-32 w-96 h-96 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-30 rounded-full blur-2xl pointer-events-none z-0"
-  >
+
+  <div class="relative z-10 mt-12 lg:mt-0">
+    <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+      <div class="absolute inset-0 rounded-full bg-gradient-to-br from-duron via-duron-light to-purple-300 animate-spin-slow opacity-50 blur-xl"></div>
+      <div class="absolute inset-1 rounded-full bg-gradient-to-br from-duron via-duron-light to-purple-300 animate-spin-slow"></div>
+      <div class="absolute inset-2 rounded-full bg-base overflow-hidden">
+        <img
+          src="/Meavatar.png"
+          alt="Alexis Ramirez"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -60,50 +118,62 @@ import SocialBalls from "../components/SocialBalls.astro";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      scrub: 1,
-    },
-  });
+  const words = [
+    "FullStack Developer",
+    "React Enthusiast",
+    "Problem Solver",
+    "Tech Lover",
+  ];
+  let wordIndex = 0;
+  let charIndex = 0;
+  const el = document.getElementById("typewriter-text");
 
-  gsap.to("#hero-blob", {
-    y: 30,
-    x: 20,
-    rotation: 5,
-    duration: 0.90,
-    ease: "sine.inOut",
-    repeat: -1,
-    yoyo: true,
-  });
+  function typeWord() {
+    if (!el) return;
+    const current = words[wordIndex];
+    if (charIndex < current.length) {
+      el.textContent += current[charIndex];
+      charIndex++;
+      setTimeout(typeWord, 80);
+    } else {
+      setTimeout(eraseWord, 2000);
+    }
+  }
 
-  gsap.from("#hero-title", {
+  function eraseWord() {
+    if (!el) return;
+    if (charIndex > 0) {
+      el.textContent = el.textContent.slice(0, -1);
+      charIndex--;
+      setTimeout(eraseWord, 40);
+    } else {
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(typeWord, 500);
+    }
+  }
+
+  typeWord();
+
+  const tl = gsap.timeline();
+
+  tl.from("#hero-title", {
     y: 40,
     opacity: 0,
-    duration: 2,
-    ease: "power2.out",
+    duration: 1.2,
+    ease: "power3.out",
   });
 
-  gsap.from("#hero-subtitle", {
+  tl.from("#hero-subtitle", {
     y: 30,
     opacity: 0,
-    duration: 2,
-    delay: 0.3,
+    duration: 1,
     ease: "power2.out",
-  });
+  }, "-=0.6");
 
-  gsap.from("#button-sec-1", {
+  tl.from("#cta-buttons", {
     y: 20,
     opacity: 0,
-    duration: 2,
-    delay: 0.5,
+    duration: 0.8,
     ease: "power2.out",
-  });
-
-  gsap.from("#button-sec-2", {
-    y: 10,
-    opacity: 0,
-    duration: 2,
-    delay: 0.7,
-    ease: "power2.out",
-  });
+  }, "-=0.4");
 </script>
