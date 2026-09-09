@@ -1,6 +1,8 @@
 ---
 import Analytics from "@vercel/analytics/astro";
-import Footer from "../components/Footer.astro";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/jetbrains-mono/400.css";
 
 interface Props {
   title: string;
@@ -13,23 +15,23 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Alexis Ramirez - FullStack Developer Portfolio" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
     <Analytics />
     <title>{title}</title>
   </head>
-  <body class="bg-hero bg-fixed bg-cover text-white" >
+  <body class="bg-hero bg-fixed bg-cover text-white font-heading">
     <slot />
   </body>
 </html>
 <style is:global>
   :root {
-    color-scheme: light dark;
+    color-scheme: dark;
   }
   html {
-    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
   body {
     display: flex;
@@ -37,13 +39,54 @@ const { title } = Astro.props;
     justify-content: center;
     flex-direction: column;
     overscroll-behavior: smooth;
+    position: relative;
+    min-height: 100vh;
   }
-  Header {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.15), transparent),
+      radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.1), transparent),
+      radial-gradient(2px 2px at 60% 20%, rgba(255,255,255,0.12), transparent),
+      radial-gradient(2px 2px at 80% 50%, rgba(255,255,255,0.08), transparent),
+      radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,0.1), transparent),
+      radial-gradient(2px 2px at 70% 90%, rgba(255,255,255,0.06), transparent),
+      radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.12), transparent),
+      radial-gradient(2px 2px at 50% 50%, rgba(255,255,255,0.05), transparent);
+    background-size: 200px 200px;
+    opacity: 0.8;
+  }
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+  ::selection {
+    background: rgba(102, 51, 238, 0.4);
+    color: white;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #63e;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8c6eff;
   }
   .nav-link {
     position: relative;
   }
-
   .nav-link::after {
     content: "";
     position: absolute;
@@ -51,10 +94,10 @@ const { title } = Astro.props;
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: #6e8efb;
+    background-color: #63e;
     transition: width 0.3s ease;
+    box-shadow: 0 0 8px rgba(102, 51, 238, 0.6);
   }
-
   .nav-link:hover::after,
   .nav-link.active::after {
     width: 100%;

@@ -1,107 +1,80 @@
 ---
-import {
-  Envelope,
-  GithubLogo,
-  LinkedinLogo,
-} from "@phosphor-icons/react";
+import { Envelope, GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
 ---
 
-<footer id="footer" class="bg-gray-900 text-white py-12 mt-20">
+<footer id="footer" class="relative mt-20 pt-20 pb-12">
+  <div class="absolute top-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-duron/50 to-transparent"></div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-10">
       <div class="text-center md:text-left">
-        <a href="/" class="text-2xl font-bold text-white">
-          Alexis<span class="text-duron">Ramirez</span>
+        <a href="/" class="text-2xl font-bold">
+          <span class="bg-gradient-to-r from-duron to-duron-light bg-clip-text text-transparent"
+            >Alexis</span
+          ><span class="text-white">Ramirez</span>
         </a>
-        <p class="text-gray-400 mt-2">Frontend Developer</p>
+        <p class="text-white/70 mt-2 text-sm">FullStack Developer</p>
       </div>
 
-      <div
-        class="flex flex-col sm:flex-row sm:space-x-12 text-center sm:text-left gap-10 sm:gap-0"
-      >
+      <div class="flex flex-col sm:flex-row sm:space-x-16 text-center sm:text-left gap-10 sm:gap-0">
         <div>
-          <h4 class="text-lg font-medium mb-4">Quick Links</h4>
-          <ul class="flex flex-wrap justify-center md:flex-col gap-4 md:gap-2">
+          <h4 class="text-sm font-medium text-white/80 uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="flex flex-wrap justify-center md:flex-col gap-4 md:gap-3">
             <li>
-              <a href="#home" class="text-gray-400 hover:text-white transition"
-                >Home</a>
+              <a href="#home" class="text-white/70 hover:text-duron-light transition-colors text-sm">Home</a>
             </li>
             <li>
-              <a href="#about" class="text-gray-400 hover:text-white transition"
-                >About</a>
+              <a href="#about" class="text-white/70 hover:text-duron-light transition-colors text-sm">About</a>
             </li>
             <li>
-              <a
-                href="#projects"
-                class="text-gray-400 hover:text-white transition">Projects</a>
+              <a href="#projects" class="text-white/70 hover:text-duron-light transition-colors text-sm">Projects</a>
             </li>
             <li>
-              <a
-                href="#contact"
-                class="text-gray-400 hover:text-white transition">Contact</a>
+              <a href="#contact" class="text-white/70 hover:text-duron-light transition-colors text-sm">Contact</a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-lg font-medium mb-4">Connect</h4>
-          <div class="flex space-x-4 justify-center">
+          <h4 class="text-sm font-medium text-white/80 uppercase tracking-wider mb-4">Connect</h4>
+          <div class="flex space-x-3 justify-center">
             <a
               href="https://www.linkedin.com/in/alexis-jose-ramirez-taveras-26388a276/"
               target="_blank"
-              class="text-gray-400 hover:text-white transition"
+              class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-duron/20 hover:border-duron/50 hover:text-duron-light hover:shadow-glow-sm transition-all"
             >
-              <LinkedinLogo size={28} />
+              <LinkedinLogo size={18} />
             </a>
             <a
               href="https://github.com/Alexis0122"
               target="_blank"
-              class="text-gray-400 hover:text-white transition"
+              class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-duron/20 hover:border-duron/50 hover:text-duron-light hover:shadow-glow-sm transition-all"
             >
-              <GithubLogo size={28} />
+              <GithubLogo size={18} />
             </a>
             <a
               href="mailto:alexisramirez0122@hotmail.com"
-              class="text-gray-400 hover:text-white transition"
+              class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-duron/20 hover:border-duron/50 hover:text-duron-light hover:shadow-glow-sm transition-all"
             >
-              <Envelope size={28} />
+              <Envelope size={18} />
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-    >
-      <p class="text-gray-400 text-center md:text-left">
-        © {new Date().getFullYear()} Alexis Ramirez. All rights reserved.
+    <div class="mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-white/70 text-sm text-center md:text-left">
+        &copy; {new Date().getFullYear()} Alexis Ramirez. All rights reserved.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/" class="text-gray-400 hover:text-white transition"
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="/" class="text-white/70 hover:text-duron-light transition-colors text-sm"
           >Privacy Policy</a
         >
-        <a href="/" class="text-gray-400 hover:text-white transition"
+        <a href="/" class="text-white/70 hover:text-duron-light transition-colors text-sm"
           >Terms of Service</a
         >
       </div>
     </div>
   </div>
 </footer>
-<!-- <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from("#footer", {
-    scrollTrigger: {
-      trigger: "#footer",
-      start: "top 95%",
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    ease: "power2.out",
-  });
-</script> -->

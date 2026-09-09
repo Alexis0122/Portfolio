@@ -1,79 +1,125 @@
 ---
+const skills = [
+  { name: "React", level: 90, color: "#61dafb" },
+  { name: "TypeScript", level: 85, color: "#3178c6" },
+  { name: "JavaScript", level: 90, color: "#f7df1e" },
+  { name: "TailwindCSS", level: 85, color: "#06b6d4" },
+  { name: "HTML5 / CSS3", level: 95, color: "#e34f26" },
+  { name: "C#", level: 75, color: "#239120" },
+  { name: "ASP.NET Core", level: 70, color: "#512bd4" },
+  { name: "SQL Server", level: 75, color: "#cc2927" },
+];
 ---
 
-<section id="about" class="py-20 px-6 bg-transparent">
-      <h2 class="text-4xl font-bold text-duron text-center mb-12">
-        About <span class="text-white">Me</span>
-      </h2>
-      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <div class="w-72 h-72 bg-black/30 rounded-lg flex items-center justify-center shadow-lg">
-          <i class="fas fa-user-tie text-6xl text-white/60">
-            <img src="/Me2.png" alt="Me" class="rounded-lg" />
-          </i>
-        </div>
-        <div class="flex-1">
-          <h3 class="text-2xl text-white font-semibold mb-4">
-            Frontend Developer with Backend Knowledge
-          </h3>
-          <p class="text-white/70 mb-6">
-            I'm Alexis Ramirez, a passionate Frontend Developer with experience
-            in creating modern web applications. I have solid knowledge of
-            backend technologies which allows me to understand the full picture
-            of web development.
-          </p>
+<section id="about" class="py-20 px-6 bg-transparent relative">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      <span class="bg-gradient-to-r from-duron to-duron-light bg-clip-text text-transparent">About</span>{" "}
+      <span class="text-white">Me</span>
+    </h2>
+    <p class="text-white/70 text-center max-w-xl mx-auto mb-16">
+      Passionate about building clean, scalable web applications
+    </p>
 
-          <h4 class="text-duron font-medium mb-3">My Skills</h4>
-          <div class="flex flex-wrap gap-3">
-            {[
-              "HTML5",
-              "CSS3",
-              "JavaScript",
-              "TypeScript",
-              "React",
-              "TailwindCSS",
-              "SQL Server",
-              "C#",
-              "Entity Framework",
-              "ASP.NET Core (WebApi)"
-            ].map((skill) => (
-              <span
-                id={skill}
-                class="bg-black/40 text-white text-sm px-4 py-2 rounded-full border border-gray-900"
-              >
-                {skill}
-              </span>
-            ))}
+    <div class="flex flex-col lg:flex-row items-center gap-16">
+      <div class="relative shrink-0">
+        <div class="relative w-64 h-64">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-duron via-duron-light to-purple-300 animate-spin-slow opacity-40 blur-md"></div>
+          <div class="absolute inset-1 rounded-2xl bg-gradient-to-br from-duron via-duron-light to-purple-300 animate-spin-slow"></div>
+          <div class="absolute inset-[3px] rounded-2xl bg-base overflow-hidden">
+            <img
+              src="/Me2.png"
+              alt="Alexis Ramirez"
+              class="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
-    </section>
+
+      <div class="flex-1 w-full max-w-xl">
+        <h3 class="text-2xl text-white font-semibold mb-4">
+          Frontend Developer with{" "}
+          <span class="text-duron-light">Backend Knowledge</span>
+        </h3>
+        <p class="text-white/80 mb-8 leading-relaxed">
+          I'm Alexis Ramirez, a passionate Frontend Developer with experience
+          in creating modern web applications. I have solid knowledge of backend
+          technologies which allows me to understand the full picture of web
+          development. I love turning complex problems into simple, beautiful
+          solutions.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mb-10">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
+            <span class="block text-2xl font-bold text-duron-light" id="stat-projects">3+</span>
+            <span class="block text-xs text-white/70 mt-1">Projects</span>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
+            <span class="block text-2xl font-bold text-duron-light" id="stat-exp">2+</span>
+            <span class="block text-xs text-white/70 mt-1">Years Code</span>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
+            <span class="block text-2xl font-bold text-duron-light" id="stat-tech">8</span>
+            <span class="block text-xs text-white/70 mt-1">Technologies</span>
+          </div>
+        </div>
+
+        <h4 class="text-duron-light font-medium mb-4">Tech Skills</h4>
+        <div class="space-y-3">
+          {skills.map((skill) => (
+            <div key={skill.name} class="skill-item">
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-white/80">{skill.name}</span>
+                <span class="text-white/80">{skill.level}%</span>
+              </div>
+              <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                <div
+                  class="skill-bar h-full rounded-full transition-all duration-1000 ease-out"
+                  style={{
+                    width: "0%",
+                    background: `linear-gradient(90deg, ${skill.color}88, ${skill.color})`,
+                    boxShadow: `0 0 8px ${skill.color}44`,
+                  }}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+
   gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from("#about h2", {
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%",
-      },
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
+  gsap.from("#about h2", {
+    scrollTrigger: { trigger: "#about", start: "top 80%" },
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  });
 
-    gsap.from("#about .flex", {
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 70%",
-      },
-      y: 40,
-      opacity: 0,
-      duration: 1.2,
-      delay: 0.2,
-      ease: "power2.out",
-    });
-
+  gsap.from(".skill-item", {
+    scrollTrigger: { trigger: "#about", start: "top 60%" },
+    x: -30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: "power2.out",
+    onComplete: () => {
+      document.querySelectorAll(".skill-bar").forEach((bar) => {
+        const parent = bar.closest(".skill-item");
+        const levelText = parent?.querySelector(".flex.justify-between span:last-child");
+        if (levelText) {
+          const level = parseInt(levelText.textContent);
+          bar.style.width = level + "%";
+        }
+      });
+    },
+  });
 </script>
